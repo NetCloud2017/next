@@ -3,6 +3,13 @@
 import { redirect } from "next/navigation";
 import { addNote, updateNote, delNote } from "@/lib/redis";
 import { revalidatePath } from "next/cache";
+
+import * as z from "zod";
+
+const schema = z.object({
+  title: z.string(),
+  content: z.string().min(1, "请填写内容").max(100, "字数最多100"),
+});
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export async function saveNote(prevState, formData) {
@@ -13,6 +20,13 @@ export async function saveNote(prevState, formData) {
     content: formData.get("body"),
     updateTime: new Date(),
   });
+
+  const validated = schema.safeParse(data);
+  if (!validated.success) {
+    return {
+      errors: validated.error.issues,
+    };
+  }
 
   // 为了让效果更明显
   await sleep(2000);
