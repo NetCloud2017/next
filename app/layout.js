@@ -1,9 +1,9 @@
-export const metadata  = {
-	title: 'day24',
-	openGraph: {
-		title: 'blog'
-	}
-}
+export const metadata = {
+  title: "day24",
+  openGraph: {
+    title: "blog",
+  },
+};
 import "../style.css";
 
 export default function RootLayout({ children }) {
