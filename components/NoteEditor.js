@@ -3,7 +3,7 @@
 import { useState } from "react";
 import NotePreview from "@/components/NotePreview";
 import { useFormStatus } from "react-dom";
-import { deleteNote, saveNote } from '../app/actions'
+import { deleteNote, saveNote } from '@/actions'
 
 export default function NoteEditor({ noteId, initialTitle, initialBody }) {
   const { pending } = useFormStatus();
