@@ -3,6 +3,7 @@ import "./style.css";
 import Sidebar from "@/components/Sidebar";
 import { locales } from "@/config.js";
 import { Footer } from "@/components/Footer";
+import CkProvider from "@/components/CkProvider";
 
 export async function generateStaticParams() {
   return locales.map((lng) => ({ lng }));
@@ -16,8 +17,10 @@ export default async function RootLayout({ children, params }) {
       <body>
         <div className="container">
           <div className="main">
-            <Sidebar lng={lng} />
-            <section className="col note-viewer">{children}</section>
+            <CkProvider>
+              <Sidebar lng={lng} />
+              <section className="col note-viewer">{children}</section>
+            </CkProvider>
           </div>
           <Footer lng={lng} />
         </div>
