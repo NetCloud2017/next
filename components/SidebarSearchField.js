@@ -2,8 +2,10 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { useTranslations } from "next-intl";
 
 function Spinner({ active = true }) {
+
   return (
     <div
       className={["spinner", active && "spinner--active"].join(" ")}
@@ -13,10 +15,12 @@ function Spinner({ active = true }) {
   );
 }
 
-export default function SidebarSearchField({ search }) {
+export default function SidebarSearchField() {
   const { replace } = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+
+  const t = useTranslations("Basic");
 
   function handleSearch(term) {
     const params = new URLSearchParams(window.location.search);
@@ -38,7 +42,7 @@ export default function SidebarSearchField({ search }) {
       </label>
       <input
         id="sidebar-search-input"
-        placeholder={search}
+        placeholder={t("search")}
         type="text"
         onChange={(e) => handleSearch(e.target.value)}
       />
