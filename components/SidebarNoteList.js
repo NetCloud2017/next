@@ -1,4 +1,4 @@
-import { getAllNotes } from "@/lib/strapi";
+import { getAllNotes } from "@/lib/prisma";
 
 import SidebarNoteListFilter from "@/components/SidebarNoteListFilter";
 import SidebarNoteItemHeader from "@/components/SidebarNoteItemHeader";

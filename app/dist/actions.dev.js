@@ -9,7 +9,7 @@ exports.deleteNote = deleteNote;
 
 var _navigation = require("next/navigation");
 
-var _redis = require("@/lib/strapi");
+var _redis = require("@/lib/prisma");
 
 var _cache = require("next/cache");
 
